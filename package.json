@@ -10,12 +10,14 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "npm run test -- --coverage --watchAll=false > coverage/coverageReport.txt",
     "eject": "react-scripts eject",
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --ext .js,.jsx --fix"
@@ -32,7 +34,8 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.13",
     "prettier": "^2.1.1",
-    "pretty-quick": "^3.0.0"
+    "pretty-quick": "^3.0.0",
+    "react-test-renderer": "^17.0.1"
   },
   "browserslist": {
     "production": [
