@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import InputAtom from '../../atoms/Input';
 
+const url = require('../../assets/img/search-icon-white-one-clipart.png')
+
 const StyledIcon = styled.img`
   position: relative;
   top: 0.3rem;
@@ -13,7 +15,7 @@ const StyledIcon = styled.img`
 function SearchBar() {
   return (
     <div>
-      <StyledIcon src="../../assets/img/search-icon-white-one-clipart.png" />
+      <StyledIcon src={url} />
       <InputAtom icon placeholder="Search..." />
     </div>
   );
