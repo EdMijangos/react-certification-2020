@@ -4,6 +4,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 
+// Components
+import { VideoCardList } from '../../components';
+
+const videoData = require('../../assets/youtube-videos-mock.json');
+
 function HomePage() {
   const history = useHistory();
   const sectionRef = useRef(null);
@@ -32,6 +37,7 @@ function HomePage() {
       ) : (
         <Link to="/login">let me in →</Link>
       )}
+      <VideoCardList data={videoData.items} />
     </section>
   );
 }
