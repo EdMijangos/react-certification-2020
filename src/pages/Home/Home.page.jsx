@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../providers/Auth';
@@ -7,18 +7,28 @@ import './Home.styles.css';
 // Components
 import { VideoCardList } from '../../components';
 
-const videoData = require('../../assets/youtube-videos-mock.json');
+// Hooks
+import useYoutubeAPI from '../../utils/hooks/useYoutubeAPI';
+
+// Context
+import VideoSearchContext from '../../states/VideoSearchContext';
 
 function HomePage() {
   const history = useHistory();
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
+  const { searchTerms } = useContext(VideoSearchContext);
+  const videoData = useYoutubeAPI(searchTerms);
 
   function deAuthenticate(event) {
     event.preventDefault();
     logout();
     history.push('/');
   }
+
+  useEffect(() => {
+    localStorage.setItem('videoData', JSON.stringify(videoData));
+  }, [videoData]);
 
   return (
     <section className="homepage" ref={sectionRef}>
@@ -37,7 +47,7 @@ function HomePage() {
       ) : (
         <Link to="/login">let me in →</Link>
       )}
-      <VideoCardList data={videoData.items} />
+      {videoData ? <VideoCardList data={videoData.items} /> : <p>Loading...</p>}
     </section>
   );
 }

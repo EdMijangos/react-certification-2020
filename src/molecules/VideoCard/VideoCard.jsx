@@ -1,35 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
-import TextAtom from '../../atoms/Text';
-import CardAtom from '../../atoms/Card';
+import { Link } from 'react-router-dom';
+import { Grid } from './styled';
+import { CardAtom, TextAtom, ThumbnailAtom } from '../../atoms';
 
-const Thumbnail = styled.div`
-  width: 100%;
-  height: 120px;
-  display: block;
-  margin: auto;
-  background-image: url(${(props) =>
-    props.thumbnail ? props.thumbnail : '../../../public/404.gif'});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 1rem;
-`;
-
-function VideoCard(props) {
+function VideoCard({ id, link, thumbnail, header, description }) {
   return (
-    <CardAtom id={props.id}>
-      <Grid>
-        <Thumbnail thumbnail={props.thumbnail} />
-        <TextAtom type="subheader">{props.subheader}</TextAtom>
-        <TextAtom>{props.description}</TextAtom>
-      </Grid>
-    </CardAtom>
+    <Link to={`/view/${link}`}>
+      <CardAtom id={id}>
+        <Grid>
+          <ThumbnailAtom thumbnail={thumbnail} height="120px" />
+          <TextAtom type="header">{header}</TextAtom>
+          <TextAtom>{description}</TextAtom>
+        </Grid>
+      </CardAtom>
+    </Link>
   );
 }
 

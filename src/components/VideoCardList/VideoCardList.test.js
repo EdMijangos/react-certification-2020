@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import VideoCardList from './VideoCardList';
 
 const mockedData = [
@@ -49,7 +50,11 @@ const mockedData = [
 
 describe('Video Card List works properly', () => {
   it('renders the correct number of video cards', () => {
-    render(<VideoCardList data={mockedData} />);
+    render(
+      <BrowserRouter>
+        <VideoCardList data={mockedData} />
+      </BrowserRouter>
+    );
     expect(screen.getAllByTestId(/video-card-/i)).toHaveLength(3);
   });
 });

@@ -16,6 +16,7 @@ describe('Search Bar works properly', () => {
   it('lets you write in the search bar', () => {
     render(<SearchBar />);
     const searchBar = screen.getByRole('textbox', { placeholder: /Search.../i });
+    expect(searchBar).toHaveValue('');
     userEvent.type(searchBar, 'charizard');
     expect(searchBar).toHaveValue('charizard');
   });
