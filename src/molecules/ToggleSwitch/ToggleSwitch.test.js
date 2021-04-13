@@ -7,6 +7,7 @@ describe('Toggle Switch works properly', () => {
   it('lets you toggle the switch', () => {
     render(<ToggleSwitch />);
     const toggle = screen.getByRole('checkbox', { id: /toggle/i });
+    expect(toggle).not.toBeChecked();
     userEvent.click(toggle);
     expect(toggle).toBeChecked();
   });

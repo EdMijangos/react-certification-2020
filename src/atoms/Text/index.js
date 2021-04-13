@@ -1,1 +1,1 @@
-export { default } from './Text';
+export { default as TextAtom } from './Text';

@@ -5,3 +5,4 @@ export { MenuButton } from './MenuButton';
 export { SearchBar } from './SearchBar';
 export { ToggleSwitch } from './ToggleSwitch';
 export { VideoCard } from './VideoCard';
+export { ThumbnailCard } from './ThumbnailCard';
