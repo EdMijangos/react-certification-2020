@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from '../../components';
 import VideoSearchContext from '../../states/VideoSearchContext';
+import { ThemeWrapper } from '../../states/ThemeContext';
 
 import './Layout.styles.css';
 
@@ -10,10 +11,12 @@ function Layout({ children }) {
 
   return (
     <div>
-      <VideoSearchContext.Provider value={searchContextVal}>
-        <Header />
-        <main className="container">{children}</main>
-      </VideoSearchContext.Provider>
+      <ThemeWrapper>
+        <VideoSearchContext.Provider value={searchContextVal}>
+          <Header />
+          <main className="container">{children}</main>
+        </VideoSearchContext.Provider>
+      </ThemeWrapper>
     </div>
   );
 }

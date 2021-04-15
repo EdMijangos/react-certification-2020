@@ -1,20 +1,24 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { VideoPlayer, ThumbnailCardList } from '../../components';
+import useYoutubeAPI from '../../utils/hooks/useYoutubeAPI';
 import { Grid } from './styled';
 
 function ViewVideoPage() {
   const { videoId } = useParams();
-  const allVideosData = JSON.parse(localStorage.getItem('videoData'));
-  const videoData = allVideosData.items.filter((obj) => {
-    return obj.id.videoId === videoId;
-  });
+  const videoData = useYoutubeAPI(null, videoId);
 
   return (
-    <Grid>
-      <VideoPlayer data={videoData[0]} />
-      <ThumbnailCardList data={allVideosData.items} />
-    </Grid>
+    <div>
+      {videoData ? (
+        <Grid>
+          <VideoPlayer data={videoData.video} />
+          <ThumbnailCardList data={videoData.related} />
+        </Grid>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
   );
 }
 

@@ -6,13 +6,13 @@ export const StyledInput = styled.input`
   border: 0;
   outline: none;
   border-radius: 5px;
-  color: white;
+  color: ${({ theme }) => theme.text};
   font-size: 1rem;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   background-color: rgba(255, 255, 255, 0.3);
-  padding-left: ${(props) => (props.icon ? 'calc(1em + 32px)' : '8px')};
+  padding-left: ${({ icon }) => (icon ? 'calc(1em + 32px)' : '8px')};
   ::placeholder {
-    color: white;
+    color: ${({ theme }) => theme.text};
     opacity: 0.6;
   }
 

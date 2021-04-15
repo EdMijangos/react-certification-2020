@@ -7,4 +7,9 @@ describe('Thumbnail Atom works properly', () => {
     render(<ThumbnailAtom thumbnail="someURL" />);
     expect(screen.getByTestId('thumbnail')).toHaveStyle('background-image: url(someURL)');
   });
+
+  it('renders the correct image', () => {
+    render(<ThumbnailAtom thumbnail="someURL" height="100px" />);
+    expect(screen.getByTestId('thumbnail')).toHaveStyle('height: 100px');
+  });
 });

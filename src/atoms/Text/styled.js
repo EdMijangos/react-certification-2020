@@ -5,18 +5,19 @@ export const StyledText = styled.span`
   font-weight: 400;
   line-height: 1.5;
   padding: ${({ padding }) => padding || '0'};
+  color: ${({ theme }) => theme.text};
   ${({ type }) => {
     switch (type) {
       case 'label':
-        return 'color: white; font-size: 0.875rem';
+        return 'font-size: 0.875rem';
       case 'subheader':
-        return 'color: black; font-size: 1rem';
+        return 'font-size: 1rem';
       case 'header':
-        return 'color: black; font-size: 1.25rem';
+        return 'font-size: 1.25rem';
       case 'title':
-        return 'color: black; font-size: 3.75rem';
+        return 'font-size: 3.75rem';
       default:
-        return 'color: rgba(0, 0, 0, 0.54); font-size: 0.875rem';
+        return 'font-size: 0.875rem; opacity: 0.54';
     }
   }}
 `;
