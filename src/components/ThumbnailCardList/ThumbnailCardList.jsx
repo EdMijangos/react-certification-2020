@@ -7,7 +7,7 @@ function ThumbnailCardList({ data }) {
     <ThumbnailCard
       key={item.id.videoId ? item.id.videoId : item.id.channelId}
       id={`thumbnail-card-${index}`}
-      link={item.id.videoId}
+      videoId={item.id.videoId}
       thumbnail={item.snippet.thumbnails.default.url}
       subheader={item.snippet.title}
     />

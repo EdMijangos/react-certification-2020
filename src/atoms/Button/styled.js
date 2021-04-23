@@ -7,6 +7,7 @@ export const StyledButton = styled.button`
   padding: ${({ padding }) => padding || '1rem'};
   border: 0;
   border-radius: ${({ round }) => (round ? '50%' : '5%')};
+  color: ${({ theme }) => theme.text};
   display: inline-flex;
   flex-direction: column;
   background-color: transparent;

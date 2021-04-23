@@ -8,7 +8,7 @@ function VideoPlayer({ data }) {
       <iframe
         width="100%"
         height="450px"
-        src={`https://www.youtube.com/embed/${data.id.videoId}`}
+        src={`https://www.youtube.com/embed/${data.id}`}
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

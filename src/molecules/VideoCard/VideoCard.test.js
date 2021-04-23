@@ -51,7 +51,7 @@ describe('Video Card works properly', () => {
       <BrowserRouter>
         <VideoCard
           id="test-card"
-          link="redirect"
+          videoId="redirect"
           thumbnail="someURL"
           header="Test"
           description="This is a description"

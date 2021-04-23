@@ -13,7 +13,8 @@ export const CheckBoxLabel = styled.label`
   height: 15px;
   cursor: pointer;
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #673ab7;
+  opacity: 0.3;
   &::after {
     content: '';
     display: block;
@@ -30,10 +31,10 @@ export const CheckBox = styled.input`
   opacity: 0;
   float: left;
   &:checked + ${CheckBoxLabel} {
-    background-color: rgba(25, 133, 123, 0.3);
+    background-color: #000;
     &::after {
       background: #198576;
-      margin-left: 24px;
+      margin-left: 26px;
     }
   }
 `;

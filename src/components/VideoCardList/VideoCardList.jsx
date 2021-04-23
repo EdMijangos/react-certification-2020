@@ -7,7 +7,7 @@ function VideoCardList({ data }) {
     <VideoCard
       key={item.id.videoId ? item.id.videoId : item.id.channelId}
       id={`video-card-${index}`}
-      link={item.id.videoId}
+      videoId={item.id.videoId}
       thumbnail={item.snippet.thumbnails.medium.url}
       header={item.snippet.title}
       description={item.snippet.description}

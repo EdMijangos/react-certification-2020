@@ -8,7 +8,7 @@ export const StyledHeader = styled.div`
   padding-right: 0.5rem;
   grid-template-columns: 1fr 70% 2fr 1fr;
   grid-gap: 1rem;
-  background-color: #1c5476;
+  background-color: ${({ theme }) => theme.headerBackground};
   z-index: 100;
 
   @media (max-width: 1160px) {

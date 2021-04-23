@@ -27,7 +27,7 @@ describe('Thumbnail Card works properly', () => {
       <BrowserRouter>
         <ThumbnailCard
           id="test-card"
-          link="redirect"
+          videoId="redirect"
           thumbnail="someURL"
           subheader="Test"
         />

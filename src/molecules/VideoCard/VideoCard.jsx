@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Grid } from './styled';
 import { CardAtom, TextAtom, ThumbnailAtom } from '../../atoms';
 
-function VideoCard({ id, link, thumbnail, header, description }) {
+function VideoCard({ id, videoId, thumbnail, header, description }) {
   return (
-    <Link to={`/view/${link}`}>
+    <Link to={`/view/${videoId}`}>
       <CardAtom id={id}>
         <Grid>
           <ThumbnailAtom thumbnail={thumbnail} height="120px" />
