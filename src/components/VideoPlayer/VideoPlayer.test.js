@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import VideoPlayer from './VideoPlayer';
+import { ContextWrapper } from '../../states/GlobalContext';
 
 const mockedData = {
   id: {
@@ -19,17 +20,17 @@ const mockedData = {
 
 describe('Video Player works properly', () => {
   it('renders a video', () => {
-    render(<VideoPlayer data={mockedData} />);
+    render(<ContextWrapper><VideoPlayer data={mockedData} /></ContextWrapper>);
     expect(document.querySelector('iframe')).toBeInTheDocument();
   });
 
   it('renders a title', () => {
-    render(<VideoPlayer data={mockedData} />);
+    render(<ContextWrapper><VideoPlayer data={mockedData} /></ContextWrapper>);
     expect(screen.getByText('A video')).toBeInTheDocument();
   });
 
   it('renders a description', () => {
-    render(<VideoPlayer data={mockedData} />);
+    render(<ContextWrapper><VideoPlayer data={mockedData} /></ContextWrapper>);
     expect(screen.getByText('Some description')).toBeInTheDocument();
   });
 });

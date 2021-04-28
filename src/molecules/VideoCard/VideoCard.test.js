@@ -46,7 +46,7 @@ describe('Video Card works properly', () => {
     expect(screen.getByTestId('test-card')).toHaveTextContent('This is a description');
   });
 
-  it('contains the description text', () => {
+  it('contains a redirection link', () => {
     render(
       <BrowserRouter>
         <VideoCard

@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Grid, InnerGrid } from './styled';
 import { ButtonAtom, TextAtom } from '../../atoms';
+import PropTypes from 'prop-types';
+import { GlobalContext } from '../../states/GlobalContext';
 
 function VideoPlayer({ data }) {
+  const [state, dispatch] = useContext(GlobalContext);
+  const [saved, setSaved] = useState(false);
+
+  const index = state.favorites.findIndex(item => item.id === data.id);
+
+  function addFavorite() {
+    dispatch({ type: 'addFavorite', payload: data })
+    setSaved(true)
+  }
+
+  function removeFavorite() {
+    dispatch({ type: 'deleteFavorite', payload: index })
+    setSaved(false)
+  }
+
+  let button;
+  if (index >= 0 || saved) {
+    button = <ButtonAtom click={removeFavorite}>REMOVER DE FAVORITOS</ButtonAtom>
+  } else {
+    button = <ButtonAtom click={addFavorite}>AGREGAR A FAVORITOS</ButtonAtom>
+  }
+
   return (
     <Grid>
       <iframe
@@ -16,11 +40,15 @@ function VideoPlayer({ data }) {
       />
       <InnerGrid>
         <TextAtom type="header">{data.snippet.title}</TextAtom>
-        <ButtonAtom>AGREGAR A FAVORITOS</ButtonAtom>
+        {state.session && button}
       </InnerGrid>
       <TextAtom>{data.snippet.description}</TextAtom>
     </Grid>
   );
+}
+
+VideoPlayer.propTypes = {
+  data: PropTypes.object.isRequired
 }
 
 export default VideoPlayer;

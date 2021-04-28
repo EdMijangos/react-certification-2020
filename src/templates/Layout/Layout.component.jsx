@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Header } from '../../components';
-import VideoSearchContext from '../../states/VideoSearchContext';
-import { ThemeWrapper } from '../../states/ThemeContext';
+import { ContextWrapper } from '../../states/GlobalContext';
+import { PropTypes } from 'prop-types';
 
 import './Layout.styles.css';
 
 function Layout({ children }) {
-  const [searchTerms, setSearchTerms] = useState('');
-  const searchContextVal = { searchTerms, setSearchTerms };
 
   return (
     <div>
-      <ThemeWrapper>
-        <VideoSearchContext.Provider value={searchContextVal}>
+      <ContextWrapper>
           <Header />
           <main className="container">{children}</main>
-        </VideoSearchContext.Provider>
-      </ThemeWrapper>
+      </ContextWrapper>
     </div>
   );
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout;

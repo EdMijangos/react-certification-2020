@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { TextAtom } from '../../atoms';
 import { CheckBox, CheckBoxLabel, CheckBoxWrapper } from './styled';
-import { ThemeContext } from '../../states/ThemeContext';
+import { GlobalContext } from '../../states/GlobalContext';
+import PropTypes from 'prop-types';
 
 function ToggleSwitch({ className, children }) {
-  const { dispatch } = useContext(ThemeContext);
+  const [, dispatch] = useContext(GlobalContext);
 
   return (
     <CheckBoxWrapper className={className}>
@@ -19,6 +20,16 @@ function ToggleSwitch({ className, children }) {
       </TextAtom>
     </CheckBoxWrapper>
   );
+}
+
+ToggleSwitch.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.string
+}
+
+ToggleSwitch.defaultProps = {
+  className: null,
+  children: null,
 }
 
 export default ToggleSwitch;
