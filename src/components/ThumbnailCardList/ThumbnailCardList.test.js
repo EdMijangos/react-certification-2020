@@ -6,7 +6,7 @@ import ThumbnailCardList from './ThumbnailCardList';
 const mockedData = [
   {
     id: {
-      videoId: 1,
+      videoId: '1',
     },
     snippet: {
       title: 'Card 1',
@@ -20,7 +20,7 @@ const mockedData = [
   },
   {
     id: {
-      videoId: 2,
+      videoId: '2',
     },
     snippet: {
       title: 'Card 2',
@@ -34,7 +34,7 @@ const mockedData = [
   },
   {
     id: {
-      videoId: 3,
+      videoId: '3',
     },
     snippet: {
       title: 'Card 3',

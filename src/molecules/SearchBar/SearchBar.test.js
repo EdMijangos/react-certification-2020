@@ -2,10 +2,11 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchBar from './SearchBar';
+import { ContextWrapper } from '../../states/GlobalContext';
 
 describe('Search Bar works properly', () => {
   it('contains the search icon', () => {
-    render(<SearchBar />);
+    render(<ContextWrapper><SearchBar /></ContextWrapper>);
     const searchBarContainer = screen
       .getByRole('textbox', { placeholder: /Search.../i })
       .closest('div');
@@ -14,7 +15,7 @@ describe('Search Bar works properly', () => {
   });
 
   it('lets you write in the search bar', () => {
-    render(<SearchBar />);
+    render(<ContextWrapper><SearchBar /></ContextWrapper>);
     const searchBar = screen.getByRole('textbox', { placeholder: /Search.../i });
     expect(searchBar).toHaveValue('');
     userEvent.type(searchBar, 'charizard');

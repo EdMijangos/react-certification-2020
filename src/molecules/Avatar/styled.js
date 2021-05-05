@@ -5,3 +5,7 @@ export const AvatarImg = styled.img`
   height: 48px;
   border-radius: 50%;
 `;
+
+export const RelativePos = styled.div`
+  position: relative;
+`

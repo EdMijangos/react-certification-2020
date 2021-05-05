@@ -9,7 +9,7 @@ export const StyledInput = styled.input`
   color: ${({ theme }) => theme.text};
   font-size: 1rem;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: ${({ theme }) => (theme.id === 'light' ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)')} ;
   padding-left: ${({ icon }) => (icon ? 'calc(1em + 32px)' : '8px')};
   ::placeholder {
     color: ${({ theme }) => theme.text};

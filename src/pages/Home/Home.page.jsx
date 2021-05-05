@@ -9,12 +9,12 @@ import { TextAtom } from '../../atoms';
 import useYoutubeAPI from '../../utils/hooks/useYoutubeAPI';
 
 // Context
-import VideoSearchContext from '../../states/VideoSearchContext';
+import { GlobalContext } from '../../states/GlobalContext';
 
 function HomePage() {
   const sectionRef = useRef(null);
-  const { searchTerms } = useContext(VideoSearchContext);
-  const videoData = useYoutubeAPI(searchTerms);
+  const [state] = useContext(GlobalContext);
+  const videoData = useYoutubeAPI(state.searchTerms);
 
   return (
     <section className="homepage" ref={sectionRef}>

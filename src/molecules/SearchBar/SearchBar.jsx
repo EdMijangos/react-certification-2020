@@ -3,22 +3,22 @@ import { useHistory } from 'react-router';
 import { InputAtom } from '../../atoms';
 import { StyledIcon } from './styled';
 import Icon from '../../assets/img/search-icon-white-one-clipart.png';
-import VideoSearchContext from '../../states/VideoSearchContext';
+import { GlobalContext } from '../../states/GlobalContext';
 
 function SearchBar() {
-  const { setSearchTerms } = useContext(VideoSearchContext);
+  const [, dispatch] = useContext(GlobalContext);
   const history = useHistory();
   let term = '';
 
   function handleClick() {
     history.push('/');
-    setSearchTerms(term);
+    dispatch({type:'setSearch', payload: term});
   }
 
   const handleKeyUp = (event) => {
     if (event.key === 'Enter') {
       history.push('/');
-      setSearchTerms(event.target.value);
+      dispatch({type:'setSearch', payload: event.target.value});
     }
     term = event.target.value;
   };

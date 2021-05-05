@@ -1,36 +1,46 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
+import { ButtonAtom, InputAtom, TextAtom } from '../../atoms';
+import { GlobalContext } from '../../states/GlobalContext'
 
-import { useAuth } from '../../providers/Auth';
+import { mockedLogin } from '../../providers/Auth';
 import './Login.styles.css';
 
 function LoginPage() {
-  const { login } = useAuth();
   const history = useHistory();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [, dispatch] = useContext(GlobalContext);
 
   function authenticate(event) {
     event.preventDefault();
-    login();
-    history.push('/');
+    mockedLogin(username, password)
+      .then(resp => {
+        dispatch({ type: 'setSession', payload: resp})
+        history.push('/');
+      })
+      .catch(err => {
+        console.log(err)
+      });
   }
 
   return (
     <section className="login">
-      <h1>Welcome back!</h1>
+      <TextAtom type="header">Enter your credentials!</TextAtom>
       <form onSubmit={authenticate} className="login-form">
         <div className="form-group">
           <label htmlFor="username">
-            <strong>username </strong>
-            <input required type="text" id="username" />
+            <TextAtom type="subheader">Username</TextAtom>
+            <InputAtom id="username" keyUp={(e) => setUsername(e.target.value)} />
           </label>
         </div>
         <div className="form-group">
           <label htmlFor="password">
-            <strong>password </strong>
-            <input required type="password" id="password" />
+            <TextAtom type="subheader">Password</TextAtom>
+            <InputAtom id="password" type="password" keyUp={(e) => setPassword(e.target.value)} />
           </label>
         </div>
-        <button type="submit">login</button>
+        <ButtonAtom type="submit">login</ButtonAtom>
       </form>
     </section>
   );
